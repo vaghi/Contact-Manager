@@ -1,4 +1,4 @@
-### Contact-Manager
+# Contact-Manager
 .NET Core application that provides a solution for a Contact Manager
 
 ## Run / Deploy
@@ -24,7 +24,7 @@ The project was built in VS017 as a AWS Serveless Application with .NET Core, so
 ```
 
 ## Endpoints
-**Create Contact**
+* **Create Contact**
 ```
 Verb: POST
 URL: api/contacts
@@ -52,7 +52,7 @@ Response:
 Contact created
 ```
 
-**Get Contact by Id**
+* **Get Contact by Id**
 ```
 Verb: GET
 URL: api/contacts/contactId
@@ -63,7 +63,7 @@ Response:
 Contact or if the id does not match with stored contact a 500 response with the corresponding Exception message
 ```
 
-**Update Contact**
+* **Update Contact**
 ```
 Verb: PUT
 URL: api/contacts
@@ -93,7 +93,7 @@ Response:
 Contact or if the id does not match with a stored contact a 500 response with the corresponding Exception message
 ```
 
-**Delete Contact by Id**
+* **Delete Contact by Id**
 ```
 Verb: GET
 URL: api/contacts/contactId
@@ -111,9 +111,9 @@ They can be run throught Visual Studio, from the Test Explorer or from the menu:
 Test > Run > All Tests
 ```
 They verify: 
- - Response of the endpoint it's ok, has te correct type and that it returns a 200 as a response
- - The given conctact is created and the returned contact is the one given
- - The Id's generated for the created contacts starts on 1 and are incremented by 1
- - The contact is being validated with the mandatory fields (Name and Email)
- - The contact was stored propertly and can be retrieve from the Get Contact endpoint
+ * Response of the endpoint it's ok, has te correct type and that it returns a 200 as a response
+ * The given conctact is created and the returned contact is the one given
+ * The Id's generated for the created contacts starts on 1 and are incremented by 1
+ * The contact is being validated with the mandatory fields (Name and Email)
+ * The contact was stored propertly and can be retrieve from the Get Contact endpoint
 

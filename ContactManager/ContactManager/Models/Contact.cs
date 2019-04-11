@@ -4,7 +4,7 @@ namespace ContactManager.Models
 {
     public class Contact
     {
-        public Contact(string Name, string Company, string ProfileImage, string Email, DateTime Birthday, int PhoneNumber, Address Address)
+        public Contact(string Name, string Company, string ProfileImage, string Email, DateTime Birthday, string PhoneNumber, Address Address)
         {
             this.Name = Name;
             this.Company = Company;
@@ -32,7 +32,7 @@ namespace ContactManager.Models
         public string ProfileImage { get; set; }
         public string Email { get; set; }
         public DateTime Birthday { get; set; }
-        public int PhoneNumber { get; set; }
+        public string PhoneNumber { get; set; }
         public Address Address { get; set; }
     }
 }

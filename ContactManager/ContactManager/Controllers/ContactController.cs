@@ -52,7 +52,7 @@ namespace ContactManager.Controllers
         }
 
         [HttpGet("getByPhone/{phone}")]
-        public IActionResult getContactByPhone(int phone)
+        public IActionResult getContactByPhone(string phone)
         {
             Contact contact = _contactService.getContactByPhone(phone);
             return Ok(contact);

@@ -16,7 +16,7 @@ namespace ContactManager.Services
 
         public Contact createContact(Contact contact)
         {
-            validateContact(contact);
+            ValidateContact(contact);
 
             return _contactDao.createContact(contact);
         }
@@ -49,7 +49,7 @@ namespace ContactManager.Services
                 throw new Exception("Invalid contact Id");
         }
 
-        public Contact getContactByPhone(int phoneNumber)
+        public Contact getContactByPhone(string phoneNumber)
         {
             Contact contact = _contactDao.getContactByPhone(phoneNumber);
 
@@ -71,38 +71,55 @@ namespace ContactManager.Services
 
         public void updateContact(Contact contact)
         {
-            validateUpdateContact(contact);
+            ValidateUpdateContact(contact);
 
             _contactDao.updateContact(contact);
         }
 
-        private void validateUpdateContact(Contact contact)
+        private void ValidateUpdateContact(Contact contact)
         {
             if (getContact(contact.Id) == null)
                 throw new Exception("Invalid contact");
 
-            validateContact(contact);
+            ValidateContact(contact);
         }
 
-        private void validateContact(Contact contact)
+        private void ValidateContact(Contact contact)
         {
             if (string.IsNullOrEmpty(contact.Name))
                 throw new Exception("Invalid name");
             else if (string.IsNullOrEmpty(contact.Email))
                 throw new Exception("Invalid email");
 
-            if(!string.IsNullOrEmpty(contact.Email))
+            if (string.IsNullOrEmpty(contact.Email) || !IsValidEmail(contact.Email))
+                throw new Exception("Invalid email");
+            else
             {
                 Contact contactByEmail = _contactDao.getContactByEmail(contact.Email);
                 if(contactByEmail != null && !contactByEmail.Id.Equals(contact.Id))
                     throw new Exception("Email duplicated");
             }
 
-            if (contact.PhoneNumber != 0)
+            if (string.IsNullOrEmpty(contact.Email) || !int.TryParse(contact.PhoneNumber, out int number))
+                throw new Exception("Invalid Phone Number");
+            else
             {
                 Contact contactByPhone = _contactDao.getContactByPhone(contact.PhoneNumber);
                 if (contactByPhone != null && !contactByPhone.Id.Equals(contact.Id))
-                    throw new Exception("Email duplicated");
+                    throw new Exception("Phone Number duplicated");
+            }
+        }
+
+        bool IsValidEmail(string email)
+        {
+            try
+            {
+                var addr = new System.Net.Mail.MailAddress(email);
+                return addr.Address == email;
+            }
+            catch
+            {
+                return false;
             }
         }
     }

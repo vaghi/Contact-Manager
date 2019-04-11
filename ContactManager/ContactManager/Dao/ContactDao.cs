@@ -37,7 +37,7 @@ namespace ContactManager.Dao
             return _contacts.FirstOrDefault(c => c.Id == contactId);
         }
 
-        public Contact getContactByPhone(int phoneNumber)
+        public Contact getContactByPhone(string phoneNumber)
         {
             return _contacts.FirstOrDefault(c => c.PhoneNumber == phoneNumber);
         }

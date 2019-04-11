@@ -9,7 +9,7 @@ namespace ContactManager.Services
         Contact getContact(int contactId);
         void deleteContact(int contactId);
         void updateContact(Contact contact);
-        Contact getContactByPhone(int phoneNumber);
+        Contact getContactByPhone(string phoneNumber);
         Contact getContactByEmail(string email);
         IList<Contact> getContactsByState(string state);
         IList<Contact> getContactsByCity(string city);

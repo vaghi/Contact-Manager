@@ -24,7 +24,7 @@ namespace UnitTest
         [Fact]
         public void CreateContactReturnsOk()
         {
-            Contact newContact = getTestContact();
+            Contact newContact = GetTestContact();
 
             var response = _contactController.createContact(newContact);
             Assert.IsType<OkObjectResult>(response);
@@ -36,7 +36,7 @@ namespace UnitTest
         [Fact]
         public void CreateContactReturnsContactOk()
         {
-            Contact newContact = getTestContact();
+            Contact newContact = GetTestContact();
 
             OkObjectResult response = _contactController.createContact(newContact) as OkObjectResult;
 
@@ -64,7 +64,10 @@ namespace UnitTest
 
             for(int i = 1; i < 100; i++)
             {
-                newContact = getTestContact();
+                newContact = GetTestContact();
+                newContact.Email = i + newContact.Email;
+                newContact.PhoneNumber = newContact.PhoneNumber + i;
+
                 response = _contactController.createContact(newContact) as OkObjectResult;
                 returnedContact = response.Value as Contact;
 
@@ -75,7 +78,7 @@ namespace UnitTest
         [Fact]
         public void CreateContactValidations()
         {
-            Contact newContact = getTestContact();
+            Contact newContact = GetTestContact();
             newContact.Name = null;
             
             Assert.Throws<Exception>(() => _contactController.createContact(newContact));
@@ -97,7 +100,7 @@ namespace UnitTest
         [Fact]
         public void GetContactReturnsOk()
         {
-            Contact newContact = getTestContact();
+            Contact newContact = GetTestContact();
             OkObjectResult createResponse = _contactController.createContact(newContact) as OkObjectResult;
             Contact returnedContact = createResponse.Value as Contact;
 
@@ -109,7 +112,7 @@ namespace UnitTest
         [Fact]
         public void CreatedContactWasStored()
         {
-            Contact newContact = getTestContact();
+            Contact newContact = GetTestContact();
             OkObjectResult createResponse = _contactController.createContact(newContact) as OkObjectResult;
             Contact createdContactReturned = createResponse.Value as Contact;
 
@@ -128,7 +131,7 @@ namespace UnitTest
             Assert.Equal(createdContactReturned.Address, getContactReturned.Address);
         }
 
-        private Contact getTestContact()
+        private Contact GetTestContact()
         {
             Address newAddress = new Address("California", "San Fransokyio", "Fake Street 123", 1426);
             Contact newContact = new Contact(
@@ -137,7 +140,7 @@ namespace UnitTest
                 "https://avatars2.githubusercontent.com/u/8461737?s=460&v=4",
                 "vaghiagustin@gmail.com",
                 new System.DateTime(1987, 3, 24),
-                0800666,
+                "0800666",
                 newAddress
             );
 

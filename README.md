@@ -1,12 +1,12 @@
-# Contact-Manager
+### Contact-Manager
 .NET Core application that provides a solution for a Contact Manager
 
-# Run / Deploy
+## Run / Deploy
 The project was built in VS017 as a AWS Serveless Application with .NET Core, so it can be deployed directly to AWS Lambda.
 
-# Classes Managed
+## Classes Managed
 **Contact:**
-```
+```javascript
 {
     "name": "Agustin",
     "company": "Earthflateners",
@@ -23,14 +23,14 @@ The project was built in VS017 as a AWS Serveless Application with .NET Core, so
 }
 ```
 
-# Endpoints
+## Endpoints
 **Create Contact**
 ```
 Verb: POST
 URL: api/contacts
 ```
 Body:
-```
+```javascript
 {
     "name": "Agustin",
     "company": "Earthflateners",
@@ -55,15 +55,56 @@ Contact created
 **Get Contact by Id**
 ```
 Verb: GET
-URL: api/contacts
+URL: api/contacts/contactId
 ```
 
 Response:
 ```
-Contact or if it does not exist a 500 response with the corresponding Exception
+Contact or if the id does not match with stored contact a 500 response with the corresponding Exception message
 ```
 
-# Tests
+**Update Contact**
+```
+Verb: PUT
+URL: api/contacts
+```
+
+Body:
+```javascript
+{
+    "id": 1,
+    "name": "Agustin",
+    "company": "Earthflateners",
+    "profileImage": null,
+    "email": "email@gmail.com",
+    "birthday": "1987-03-24",
+    "phoneNumber": 0,
+    "address": {
+    	"state": "State",
+        "city": "City",
+        "street": "Street",
+        "cp": 123
+    }
+}
+```
+
+Response:
+```
+Contact or if the id does not match with a stored contact a 500 response with the corresponding Exception message
+```
+
+**Delete Contact by Id**
+```
+Verb: GET
+URL: api/contacts/contactId
+```
+
+Response:
+```
+Ok response with a status 200 or if the id does not match with stored contact a 500 status response with the corresponding Exception message
+```
+
+## Tests
 The project has unit test over the endpoint Create Contact.
 They can be run throught Visual Studio, from the Test Explorer or from the menu:
 ```

@@ -4,6 +4,9 @@
 ## Run / Deploy
 The project was built in VS017 as a AWS Serveless Application with .NET Core, so it can be deployed directly to AWS Lambda.
 
+The project has been already deployed on AWS Lambda and can be accessed via the URL:\
+    https://fciytka6gk.execute-api.sa-east-1.amazonaws.com/Prod
+
 ## Classes Managed
 **Contact:**
 ```javascript

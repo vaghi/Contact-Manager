@@ -5,7 +5,7 @@
 The project was built in VS017 as a AWS Serveless Application with .NET Core, so it can be deployed directly to AWS Lambda.
 
 The project has been already deployed on AWS Lambda and can be accessed via the URL:\
-    https://fciytka6gk.execute-api.sa-east-1.amazonaws.com/Prod
+    https://fciytka6gk.execute-api.sa-east-1.amazonaws.com/Prod/ + endpoint
 
 ## Classes Managed
 **Contact:**
@@ -16,7 +16,7 @@ The project has been already deployed on AWS Lambda and can be accessed via the 
     "profileImage": null,
     "email": "email@gmail.com",
     "birthday": "1987-03-24",
-    "phoneNumber": 0,
+    "phoneNumber": 0123456789,
     "address": {
     	"state": "State",
         "city": "City",
@@ -27,7 +27,7 @@ The project has been already deployed on AWS Lambda and can be accessed via the 
 ```
 
 ## Endpoints
-* **Create Contact**
+* **Create Contact**\
 Creates a contact and validates the mandatory fields
 ```
 Verb: POST
@@ -41,7 +41,7 @@ Body:
     "profileImage": null,
     "email": "email@gmail.com",
     "birthday": "1987-03-24",
-    "phoneNumber": 0,
+    "phoneNumber": 0123456789,
     "address": {
     	"state": "State",
         "city": "City",
@@ -56,7 +56,7 @@ Response:
 Contact created
 ```
 
-* **Get Contact by Id**
+* **Get Contact by Id**\
 Retreives a contact with the given id or returns an error message
 ```
 Verb: GET
@@ -68,7 +68,7 @@ Response:
 Contact or if the id does not match with any stored contact a 500 response with the corresponding Exception message
 ```
 
-* **Update Contact**
+* **Update Contact**\
 Updates a contact with the given id, and validate the mandatory fields or returns an error message
 ```
 Verb: PUT
@@ -99,7 +99,7 @@ Response:
 Contact or if the id does not match with any stored contact a 500 response with the corresponding Exception message
 ```
 
-* **Delete Contact by Id**
+* **Delete Contact by Id**\
 Deletes a contact with the given id or returns an error message
 ```
 Verb: DELETE
@@ -111,7 +111,7 @@ Response:
 Ok response with a status 200 or if the id does not match with any stored contact a 500 status response with the corresponding Exception message
 ```
 
-* **Get Contact by Email**
+* **Get Contact by Email**\
 Retreives a contact with the given email or returns an error message
 ```
 Verb: GET
@@ -123,7 +123,7 @@ Response:
 Contact or if the email does not match with any stored contact a 500 response with the corresponding Exception message
 ```
 
-* **Get Contact by Phone**
+* **Get Contact by Phone**\
 Retreives a contact with the given phone or returns an error message
 ```
 Verb: GET
@@ -135,7 +135,7 @@ Response:
 Contact or if the phone does not match with any stored contact a 500 response with the corresponding Exception message
 ```
 
-* **Get Contacts from State**
+* **Get Contacts from State**\
 Retreives all contacts with the given state in their Address, not case sensitive
 ```
 Verb: GET
@@ -147,7 +147,7 @@ Response:
 List<Contact>
 ```
 
-* **Get Contacts from City**
+* **Get Contacts from City**\
 Retreives all contacts with the given city in their Address, not case sensitive
 ```
 Verb: GET
@@ -170,6 +170,6 @@ They verify:
  * Response of the endpoint it's ok, has te correct type and that it returns a 200 as a response
  * The given conctact is created and the returned contact is the one given
  * The Id's generated for the created contacts starts on 1 and are incremented by 1
- * The contact is being validated with the mandatory fields (Name and Email)
+ * The contact is being validated with the mandatory fields (Name and Email) and with valid values
  * The contact was stored propertly and can be retrieve from the Get Contact endpoint
 

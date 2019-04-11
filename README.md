@@ -28,6 +28,7 @@ The project has been already deployed on AWS Lambda and can be accessed via the 
 
 ## Endpoints
 * **Create Contact**
+Creates a contact and validates the mandatory fields
 ```
 Verb: POST
 URL: api/contacts
@@ -56,6 +57,7 @@ Contact created
 ```
 
 * **Get Contact by Id**
+Retreives a contact with the given id or returns an error message
 ```
 Verb: GET
 URL: api/contacts/contactId
@@ -63,10 +65,11 @@ URL: api/contacts/contactId
 
 Response:
 ```
-Contact or if the id does not match with stored contact a 500 response with the corresponding Exception message
+Contact or if the id does not match with any stored contact a 500 response with the corresponding Exception message
 ```
 
 * **Update Contact**
+Updates a contact with the given id, and validate the mandatory fields or returns an error message
 ```
 Verb: PUT
 URL: api/contacts
@@ -93,19 +96,69 @@ Body:
 
 Response:
 ```
-Contact or if the id does not match with a stored contact a 500 response with the corresponding Exception message
+Contact or if the id does not match with any stored contact a 500 response with the corresponding Exception message
 ```
 
 * **Delete Contact by Id**
+Deletes a contact with the given id or returns an error message
 ```
-Verb: GET
+Verb: DELETE
 URL: api/contacts/contactId
 ```
 
 Response:
 ```
-Ok response with a status 200 or if the id does not match with stored contact a 500 status response with the corresponding Exception message
+Ok response with a status 200 or if the id does not match with any stored contact a 500 status response with the corresponding Exception message
 ```
+
+* **Get Contact by Email**
+Retreives a contact with the given email or returns an error message
+```
+Verb: GET
+URL: api/contacts/getByEmail/{email}
+```
+
+Response:
+```
+Contact or if the email does not match with any stored contact a 500 response with the corresponding Exception message
+```
+
+* **Get Contact by Phone**
+Retreives a contact with the given phone or returns an error message
+```
+Verb: GET
+URL: api/contacts/getByPhone/{phone}
+```
+
+Response:
+```
+Contact or if the phone does not match with any stored contact a 500 response with the corresponding Exception message
+```
+
+* **Get Contacts from State**
+Retreives all contacts with the given state in their Address, not case sensitive
+```
+Verb: GET
+URL: api/contacts/getContactsFromState/{state}
+```
+
+Response:
+```
+List<Contact>
+```
+
+* **Get Contacts from City**
+Retreives all contacts with the given city in their Address, not case sensitive
+```
+Verb: GET
+URL: api/contacts/getContactsFromCity/{city}
+```
+
+Response:
+```
+List<Contact>
+```
+
 
 ## Tests
 The project has unit test over the endpoint Create Contact.

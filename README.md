@@ -174,13 +174,13 @@ They verify:
  * The contact was stored propertly and can be retrieve from the Get Contact endpoint
 
 Pending tests to add:
-    * Create Contact: Validate invalid and duplicated values for email and phone number
-    * Update Contact: All tests
-    * Delete Contact: All tests
-    * Get Contact by Id: All tests
-    * Get Contact by Email: All tests
-    * Get Contact by Phone: All tests
-    * Get Contacts by State: All tests
-    * Get Contacts by City: All tests
+* Create Contact: Validate invalid and duplicated values for email and phone number
+* Update Contact: All tests
+* Delete Contact: All tests
+* Get Contact by Id: All tests
+* Get Contact by Email: All tests
+* Get Contact by Phone: All tests
+* Get Contacts by State: All tests
+* Get Contacts by City: All tests
     
 

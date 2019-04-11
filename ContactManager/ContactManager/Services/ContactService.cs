@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using ContactManager.Dao;
 using ContactManager.Models;
-using Newtonsoft.Json;
 
 namespace ContactManager.Services
 {
@@ -17,10 +16,7 @@ namespace ContactManager.Services
 
         public Contact createContact(Contact contact)
         {
-            if(string.IsNullOrEmpty(contact.Name))
-                throw new Exception("Invalid name");
-            else if(string.IsNullOrEmpty(contact.Email))
-                throw new Exception("Invalid email");
+            validateContact(contact);
 
             return _contactDao.createContact(contact);
         }
@@ -75,10 +71,39 @@ namespace ContactManager.Services
 
         public void updateContact(Contact contact)
         {
-            if(getContact(contact.Id) == null)
-                throw new Exception("Invalid contact");
+            validateUpdateContact(contact);
 
             _contactDao.updateContact(contact);
+        }
+
+        private void validateUpdateContact(Contact contact)
+        {
+            if (getContact(contact.Id) == null)
+                throw new Exception("Invalid contact");
+
+            validateContact(contact);
+        }
+
+        private void validateContact(Contact contact)
+        {
+            if (string.IsNullOrEmpty(contact.Name))
+                throw new Exception("Invalid name");
+            else if (string.IsNullOrEmpty(contact.Email))
+                throw new Exception("Invalid email");
+
+            if(!string.IsNullOrEmpty(contact.Email))
+            {
+                Contact contactByEmail = _contactDao.getContactByEmail(contact.Email);
+                if(contactByEmail != null && !contactByEmail.Id.Equals(contact.Id))
+                    throw new Exception("Email duplicated");
+            }
+
+            if (contact.PhoneNumber != 0)
+            {
+                Contact contactByPhone = _contactDao.getContactByPhone(contact.PhoneNumber);
+                if (contactByPhone != null && !contactByPhone.Id.Equals(contact.Id))
+                    throw new Exception("Email duplicated");
+            }
         }
     }
 }

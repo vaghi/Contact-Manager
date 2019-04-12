@@ -88,8 +88,6 @@ namespace ContactManager.Services
         {
             if (string.IsNullOrEmpty(contact.Name))
                 throw new Exception("Invalid name");
-            else if (string.IsNullOrEmpty(contact.Email))
-                throw new Exception("Invalid email");
 
             if (string.IsNullOrEmpty(contact.Email) || !IsValidEmail(contact.Email))
                 throw new Exception("Invalid email");
@@ -100,7 +98,7 @@ namespace ContactManager.Services
                     throw new Exception("Email duplicated");
             }
 
-            if (string.IsNullOrEmpty(contact.Email) || !int.TryParse(contact.PhoneNumber, out int number))
+            if (!string.IsNullOrEmpty(contact.Email) && !int.TryParse(contact.PhoneNumber, out int number))
                 throw new Exception("Invalid Phone Number");
             else
             {

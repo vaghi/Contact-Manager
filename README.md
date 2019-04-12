@@ -67,7 +67,7 @@ Body:
 
 Response:
 ```
-Contact created
+Contact created or if it has an invalid field a 500 response with the corresponding Exception message
 ```
 
 * **Get Contact by Id**\
@@ -110,7 +110,7 @@ Body:
 
 Response:
 ```
-Contact or if the id does not match with any stored contact a 500 response with the corresponding Exception message
+Contact or if the id does not match with any stored contact or has an invalid field a 500 response with the corresponding Exception message
 ```
 
 * **Delete Contact by Id**\
@@ -134,7 +134,7 @@ URL: api/contacts/getByEmail/{email}
 
 Response:
 ```
-Contact or if the email does not match with any stored contact a 500 response with the corresponding Exception message
+ Contact or if the email does not match with any stored contact a 500 response with the corresponding Exception message
 ```
 
 * **Get Contact by Phone**\

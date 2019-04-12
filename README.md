@@ -6,6 +6,20 @@ The project was built in VS017 as a AWS Serveless Application with .NET Core, so
 
 The project has been already deployed on AWS Lambda and can be accessed via the URL:\
     https://fciytka6gk.execute-api.sa-east-1.amazonaws.com/Prod/ + endpoint
+    
+It can also be run locally with Visual Studio, running the main project "ContactManager".
+
+## The Business
+The project provides a solution for a Contact Manager.
+
+Contacts can be:
+    Created, Updated, Deleted, Geted by Id, Email or Phone Number, or obtained by State or City.
+
+The contact to be created follows this restrictions:
+* * Name * * its mandatory
+* * Email * * its mandatory, must have a valid format and can't be repeated
+* * Phone Number * * must have a valid format and can't be repeated
+
 
 ## Classes Managed
 **Contact:**

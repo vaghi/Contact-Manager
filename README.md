@@ -13,7 +13,7 @@ It can also be run locally with Visual Studio, running the main project "Contact
 The project provides a solution for a Contact Manager.
 
 Contacts can be:
-    Created, Updated, Deleted, Geted by Id, Email or Phone Number, or obtained by State or City.
+    Created, Updated, Deleted, Got by Id, Email or Phone Number, or obtained by State or City.
 
 The contact to be created follows this restrictions:
 * * Name * * its mandatory
